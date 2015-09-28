@@ -10,6 +10,10 @@ import nl.cwi.moalg.annos.Scopes;
 public interface StatemachineModel<M, S, T> {
 	@Scopes({"State"})
 	M machine(String name, List<S> states);
-	S state(@Def("State") String name, List<T> transitions, List<S> in);
-	T trans(String event,  @Ref("State") S to);
+	
+	@Scopes("Transition")
+	S state(@Def("State") String name, List<T> transitions, 
+			@Inv(ns="Transition", field="to", many=true) List<T> in);
+	
+	T trans(@Def("Transition") String event,  @Ref("State") S to);
 }

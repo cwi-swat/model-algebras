@@ -9,9 +9,9 @@ public class Main {
 
 	public static <M, S, T> M doors(StatemachineSyntax<M, S, T> alg) {
 		return alg.machine("doors", Arrays.asList(
-				alg.state("closed", Arrays.asList(alg.trans("open", "opened"), alg.trans("lock", "locked"))),
-				alg.state("opened", Arrays.asList(alg.trans("close", "closed"))),
-				alg.state("locked", Arrays.asList(alg.trans("unlock", "closed")))
+				alg.state("closed", Arrays.asList(alg.trans("open", "opened"), alg.trans("lock", "locked")), null),
+				alg.state("opened", Arrays.asList(alg.trans("close", "closed")), null),
+				alg.state("locked", Arrays.asList(alg.trans("unlock", "closed")), null)
 				));
 	}
 	
